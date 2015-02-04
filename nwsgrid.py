@@ -3,6 +3,9 @@
 Created on Mon Dec  8 23:09:39 2014
 
 @author: cranejohnson
+
+Library file that contains HRAP and XMRG functions
+
 """
 import math
 from struct import pack

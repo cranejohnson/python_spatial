@@ -12,9 +12,9 @@ from netCDF4 import Dataset
 from scipy.interpolate import griddata
 from pylab import savefig
 import math
-import time
+#import time
 from struct import pack
-import nwsgrid
+from nwsgrid import *
 #from netCDF4 import num2date
 
 
@@ -48,7 +48,7 @@ hlat = hraplat[[0,0,-1,-1],[0,-1,0,-1]]
 hlon = hraplon[[0,0,-1,-1],[0,-1,0,-1]]
 
 #Get the netCDF4 dataset
-gfs_fcst = Dataset('http://nomads.ncep.noaa.gov:9090/dods/hiresw/hiresw20141208/hiresw_hiarw_00z')
+gfs_fcst = Dataset('http://nomads.ncep.noaa.gov:9090/dods/hiresw/hiresw20150203/hiresw_hiarw_00z')
 
 lats = gfs_fcst.variables['lat'][:] 
 lons = gfs_fcst.variables['lon'][:]
@@ -63,11 +63,9 @@ fcst_time = gfs_fcst.variables['time']
 surfprecip = gfs_fcst.variables['apcpsfc']
 
 
+
 i=0
 for prcp in surfprecip:
-    if i!=3:
-        i+=1
-        continue
     flat = prcp.flatten()
     fig = plt.figure(figsize=(10,10))
 
